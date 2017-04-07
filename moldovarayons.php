@@ -9,11 +9,11 @@
  *   - list of states/provinces with abbreviation,
  *   - list of states/provinces to rename,
  */
-function nigeriastates_stateConfig() {
+function moldovarayons_stateConfig() {
   $config = array(
     // CAUTION: only use `overwrite` on fresh databases.
     'overwrite' => TRUE,
-    'countryIso' => 'NG',
+    'countryIso' => 'MD',
     'states' => array(
       // 'state name' => 'abbreviation',
       'Abia State' => '1',
@@ -67,8 +67,8 @@ function nigeriastates_stateConfig() {
  * @return bool
  *   Success true/false.
  */
-function nigeriastates_loadProvinces() {
-  $stateConfig = nigeriastates_stateConfig();
+function moldovarayons_loadProvinces() {
+  $stateConfig = moldovarayons_stateConfig();
   if (empty($stateConfig['states']) || empty($stateConfig['countryIso'])) {
     return FALSE;
   }
@@ -86,7 +86,7 @@ function nigeriastates_loadProvinces() {
   catch (CiviCRM_API3_Exception $e) {
     $error = $e->getMessage();
     CRM_Core_Error::debug_log_message(ts('API Error: %1', array(
-      'domain' => 'org.ndi.nigeriastates',
+      'domain' => 'org.ndi.moldovarayons',
       1 => $error,
     )));
     return FALSE;
@@ -182,22 +182,22 @@ function nigeriastates_loadProvinces() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_install
  */
-function nigeriastates_civicrm_install() {
-  nigeriastates_loadProvinces();
+function moldovarayons_civicrm_install() {
+  moldovarayons_loadProvinces();
 }
 /**
  * Implements hook_civicrm_enable().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_enable
  */
-function nigeriastates_civicrm_enable() {
-  nigeriastates_loadProvinces();
+function moldovarayons_civicrm_enable() {
+  moldovarayons_loadProvinces();
 }
 /**
  * Implements hook_civicrm_upgrade().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_upgrade
  */
-function nigeriastates_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
-  nigeriastates_loadProvinces();
+function moldovarayons_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
+  moldovarayons_loadProvinces();
 }
